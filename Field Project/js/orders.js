@@ -8,8 +8,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/orders?userId=${loggedInUser.id}`);
-        const orders = await response.json();
+        const { data: orders, error } = await supabase
+            .from('orders')
+            .select('*')
+            .eq('userId', loggedInUser.id)
+            .order('orderDate', { ascending: false });
+
+        if (error) throw error;
 
         if (orders.length === 0) {
             ordersContainer.innerHTML = '<p>You have not placed any orders yet.</p>';

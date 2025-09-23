@@ -444,7 +444,11 @@
         "M",
         "L"
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "text": "There are no reviews yet."
+        } 
+      ]
     },
     {
       "id": "6",
@@ -460,7 +464,11 @@
         "L",
         "XL"
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "text": "There are no reviews yet."
+        }
+      ]
     },
     {
       "id": "7",
@@ -473,9 +481,15 @@
       "sizes": [
         "S",
         "M",
-        "L"
+        "L",
+        "Custom"
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "author": "Rina K.",
+          "text": "Sparkled all night! The fit was just right."
+        }
+      ]
     },
     {
       "id": "8",
@@ -491,7 +505,12 @@
         "L",
         "Custom"
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "author": "Simran T.",
+          "text": "Felt like a princess! The gown was stunning and comfortable."
+        }
+      ]
     },
     {
       "id": "9",
@@ -504,9 +523,16 @@
       "sizes": [
         "S",
         "M",
-        "L"
+        "L",
+        "XL",
+        "Custom"
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "author": "Ayesha P.",
+          "text": "The fit was perfect and the fabric felt luxurious."
+        }
+      ]
     },
     {
       "id": "10",
@@ -520,9 +546,15 @@
         "S",
         "M",
         "L",
-        "XL"
+        "XL",
+        "Custom"
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "author": "Meera L.",
+          "text": "Perfect for summer! Light and comfortable."
+        }
+      ]
     },
     {
       "id": "11",
@@ -535,9 +567,16 @@
       "sizes": [
         "S",
         "M",
-        "L"
+        "L",
+        "XL",
+        "Custom"
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "author": "Tina S.",
+          "text": "Loved the flowy design and the color options!"
+        }
+      ]
     },
     {
       "id": "12",
@@ -554,7 +593,11 @@
         "XL",
         "Custom"
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "text": "There are no reviews yet."
+        }
+      ]
     }
   ]
 }

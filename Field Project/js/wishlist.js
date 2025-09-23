@@ -7,16 +7,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
-    const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const wishlistIds = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-    if (wishlist.length === 0) {
+    if (wishlistIds.length === 0) {
         wishlistGrid.innerHTML = '<p>Your wishlist is empty. Add items by clicking the heart icon!</p>';
         return;
     }
 
     try {
-        const fetchPromises = wishlist.map(id => fetch(`http://localhost:3000/products/${id}`).then(res => res.json()));
-        const products = await Promise.all(fetchPromises);
+        const { data: products, error } = await supabase
+            .from('products')
+            .select('*')
+            .in('id', wishlistIds);
+
+        if (error) throw error;
         
         wishlistGrid.innerHTML = '';
         products.forEach(product => {

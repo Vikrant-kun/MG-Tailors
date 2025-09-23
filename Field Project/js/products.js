@@ -1,6 +1,7 @@
 async function loadProducts() {
     const params = new URLSearchParams(window.location.search);
     const category = params.get('category');
+    const quickViewId = params.get('quickview_id');
     const pageTitle = document.getElementById('page-title');
     const productGrid = document.getElementById('product-grid');
     const categoryList = document.getElementById('category-list');
@@ -13,13 +14,13 @@ async function loadProducts() {
 
     try {
         if (categoryList) {
-            const respCats = await fetch('http://localhost:3000/categories');
-            if (respCats.ok) {
-                const cats = await respCats.json();
+            const { data: categories, error } = await supabase.from('categories').select('name');
+            if (error) throw error;
+            if (categories) {
                 categoryList.innerHTML = '<li><a href="products.html">All Products</a></li>';
-                cats.forEach(c => {
+                categories.forEach(c => {
                     const li = document.createElement('li');
-                    li.innerHTML = `<a href="products.html?category=${encodeURIComponent(c.name)}">${c.name.charAt(0).toUpperCase() + c.name.slice(1)}</a>`;
+                    li.innerHTML = `<a href="products.html?category=${c.name}">${c.name.charAt(0).toUpperCase() + c.name.slice(1)}</a>`;
                     categoryList.appendChild(li);
                 });
             }
@@ -29,9 +30,12 @@ async function loadProducts() {
     }
 
     try {
-        const url = category ? `http://localhost:3000/products?category=${encodeURIComponent(category)}` : `http://localhost:3000/products`;
-        const response = await fetch(url);
-        const products = await response.json();
+        let query = supabase.from('products').select('*');
+        if (category) {
+            query = query.eq('category', category);
+        }
+        const { data: products, error } = await query;
+        if (error) throw error;
         
         if (!productGrid) return;
         productGrid.innerHTML = '';
@@ -46,13 +50,8 @@ async function loadProducts() {
             card.className = 'product-card';
             card.dataset.productId = product.id;
             card.innerHTML = `
-                <div class="product-image">
-                    <img src="${normalizeImage(product.imageUrl)}" alt="${escapeHtml(product.name)}">
-                </div>
-                <div class="product-info">
-                    <h3>${escapeHtml(product.name)}</h3>
-                    <p>₹${product.price}</p>
-                </div>
+                <div class="product-image"><img src="${product.imageUrl}" alt="${product.name}"></div>
+                <div class="product-info"><h3>${product.name}</h3><p>₹${product.price}</p></div>
             `;
             productGrid.appendChild(card);
         });
@@ -64,6 +63,10 @@ async function loadProducts() {
                 openQuickView(productId);
             }
         });
+        
+        if(quickViewId) {
+            openQuickView(quickViewId);
+        }
 
     } catch (error) {
         console.error('Error fetching products:', error);
@@ -73,29 +76,26 @@ async function loadProducts() {
 
 async function openQuickView(productId) {
     try {
-        const response = await fetch(`http://localhost:3000/products/${productId}`);
-        const product = await response.json();
-
+        const { data: product, error } = await supabase.from('products').select('*').eq('id', productId).single();
+        if (error) throw error;
+        
         const modal = document.createElement('div');
         modal.className = 'quick-view-modal';
-
-        const sizeOptions = (product.sizes || []).map(size => `<button class="size-option" data-size="${escapeHtml(size)}">${escapeHtml(size)}</button>`).join('');
-        const reviewsHTML = (product.reviews || []).map(review => `
-            <div class="review"><p>"${escapeHtml(review.text)}"</p><span>- ${escapeHtml(review.author)}</span></div>
-        `).join('');
-
+        const sizeOptions = (product.sizes || []).map(size => `<button class="size-option" data-size="${size}">${size}</button>`).join('');
+        const reviewsHTML = (product.reviews || []).map(review => `<div class="review"><p>"${review.text}"</p><span>- ${review.author}</span></div>`).join('');
+        
         modal.innerHTML = `
             <div class="quick-view-content">
                 <span class="quick-view-close">&times;</span>
-                <div class="quick-view-image"><img src="${normalizeImage(product.imageUrl)}" alt="${escapeHtml(product.name)}"></div>
+                <div class="product-title-header">
+                    <h2>${product.name}</h2>
+                    <button class="wishlist-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="quick-view-image"><img src="${product.imageUrl}" alt="${product.name}"></div>
                 <div class="quick-view-details">
-                    <div class="product-title-header">
-                        <h2>${escapeHtml(product.name)}</h2>
-                        <button class="wishlist-btn" title="Add to Wishlist"><i class="far fa-heart"></i></button>
-                    </div>
                     <p class="product-price">₹${product.price}</p>
-                    <p class="product-description">${escapeHtml(product.description || "N/A")}</p>
-                    <p class="product-fabric"><strong>Fabric:</strong> ${escapeHtml(product.fabric || "N/A")}</p>
+                    <p class="product-description">${product.description || "N/A"}</p>
+                    <p class="product-fabric"><strong>Fabric:</strong> ${product.fabric || "N/A"}</p>
                     <div class="size-selection"><label>Select Size:</label><div class="size-options">${sizeOptions}</div></div>
                     <button id="add-to-cart-modal" class="btn">Add to Cart</button>
                     <div class="product-reviews"><h4>Customer Reviews</h4>${reviewsHTML || '<p>No reviews yet.</p>'}</div>
@@ -104,66 +104,9 @@ async function openQuickView(productId) {
         `;
         document.body.appendChild(modal);
 
-        const wishlistBtn = modal.querySelector('.wishlist-btn');
-        const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        if (wishlist.includes(product.id)) {
-            wishlistBtn.classList.add('active');
-            wishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
-        }
-
-        wishlistBtn.addEventListener('click', () => {
-            let currentWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-            if (!currentWishlist.includes(product.id)) {
-                currentWishlist.push(product.id);
-                localStorage.setItem('wishlist', JSON.stringify(currentWishlist));
-                wishlistBtn.classList.add('active');
-                wishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
-                showTempMessage('Added to Wishlist!');
-            }
-        });
-
-        modal.querySelector('.quick-view-close').addEventListener('click', () => modal.remove());
-        modal.addEventListener('click', (event) => { if (event.target === modal) modal.remove(); });
-
-        let selectedSize = null;
-        modal.querySelectorAll('.size-option').forEach(btn => {
-            btn.addEventListener('click', () => {
-                modal.querySelectorAll('.size-option').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                selectedSize = btn.dataset.size;
-            });
-        });
-
-        modal.querySelector('#add-to-cart-modal').addEventListener('click', () => {
-            if (!selectedSize && product.sizes && product.sizes.length > 0) {
-                showTempMessage('Please select a size.');
-                return;
-            }
-            const finalSize = selectedSize || "One Size";
-            const cartItem = { id: product.id, name: product.name, price: product.price, imageUrl: product.imageUrl, size: finalSize, quantity: 1, category: product.category };
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const idx = cart.findIndex(i => i.id == product.id && i.size === finalSize);
-            if (idx > -1) { cart[idx].quantity += 1; } else { cart.push(cartItem); }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-            showTempMessage('Item added to your cart!');
-            modal.remove();
-        });
-
-    } catch (error) { console.error('Error opening quick view:', error); }
-}
-
-function normalizeImage(url) {
-    if (!url) return 'images/fallback.jpg';
-    if (url.includes('images.unsplash.com') && !url.includes('auto=format')) {
-        return url.includes('?') ? `${url}&auto=format&fit=crop&w=800&q=80` : `${url}?auto=format&fit=crop&w=800&q=80`;
+    } catch (error) {
+        console.error('Error opening quick view:', error);
     }
-    return url;
-}
-
-function escapeHtml(str) {
-    if (!str) return '';
-    return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
 }
 
 function updateCartCount() {
@@ -176,18 +119,6 @@ function updateCartCount() {
     }
 }
 
-function showTempMessage(text) {
-    const m = document.createElement('div');
-    m.className = 'temp-toast';
-    m.textContent = text;
-    document.body.appendChild(m);
-    setTimeout(() => m.remove(), 2000);
-}
-
 document.addEventListener('DOMContentLoaded', loadProducts);
-window.addEventListener('pageshow', (event) => {
-    if (event.persisted) {
-        loadProducts();
-    }
-});
+window.addEventListener('pageshow', (event) => { if (event.persisted) { loadProducts(); } });
 window.addEventListener('storage', updateCartCount);

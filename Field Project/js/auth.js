@@ -23,41 +23,32 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'block';
     }
 
-    if (registerForm) {
+        if (registerForm) {
         registerForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const name = event.target.username.value;
             const email = event.target.email.value;
             const password = event.target.password.value;
-            
-            try {
-                const checkResponse = await fetch(`http://localhost:3000/users?email=${email}`);
-                const existingUsers = await checkResponse.json();
 
-                if (existingUsers.length > 0) {
-                    showModal('This email is already registered.', 'Go to Login', () => {
-                        window.location.href = 'login.html';
-                    });
-                    return;
+            const { data, error } = await supabase.auth.signUp({
+                email: email,
+                password: password,
+                options: {
+                    data: {
+                        full_name: name,
+                    }
                 }
+            });
 
-                const newUser = { name, email, password };
-                const createResponse = await fetch('http://localhost:3000/users', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(newUser),
+            if (error) {
+                showModal(`Registration failed: ${error.message}`, 'Try Again', () => {
+                    modal.style.display = 'none';
                 });
-
-                if (createResponse.ok) {
-                    showModal('Registration successful!', 'Go to Login', () => {
-                        window.location.href = 'login.html';
-                    }, 'success');
-                } else {
-                    showModal('Registration failed.', 'Try Again', () => {
-                        modal.style.display = 'none';
-                    });
-                }
-            } catch (error) { console.error('Error:', error); }
+            } else {
+                showModal('Registration successful! Please check your email to confirm.', 'Go to Login', () => {
+                    window.location.href = 'login.html';
+                }, 'success');
+            }
         });
     }
 
@@ -67,31 +58,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = event.target.email.value;
             const password = event.target.password.value;
 
-            try {
-                const response = await fetch(`http://localhost:3000/users?email=${email}`);
-                const users = await response.json();
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: email,
+                password: password,
+            });
 
-                if (users.length === 0) {
-                    showModal('No user found. Please register.', 'Register', () => {
-                        window.location.href = 'register.html';
-                    });
-                } else {
-                    const user = users[0];
-                    if (user.password === password) {
-                        localStorage.setItem('loggedInUser', JSON.stringify(user));
-                        showModal('Login successful! Welcome back.', 'Continue', () => {
-                            window.location.href = 'index.html';
-                        }, 'success');
-                    } else {
-                        showModal('Incorrect password.', 'Try Again', () => {
-                            modal.style.display = 'none';
-                        });
-                    }
-                }
-            } catch (error) { console.error('Error:', error); }
+            if (error) {
+                showModal(`Login failed: ${error.message}`, 'Try Again', () => {
+                    modal.style.display = 'none';
+                });
+            } else {
+                const user = {
+                    id: data.user.id,
+                    email: data.user.email,
+                    name: data.user.user_metadata.full_name
+                };
+                localStorage.setItem('loggedInUser', JSON.stringify(user));
+                showModal('Login successful! Welcome back.', 'Continue', () => {
+                    window.location.href = 'index.html';
+                }, 'success');
+            }
         });
     }
-
+    
     if (modal) {
         window.onclick = function(event) {
             if (event.target == modal) {

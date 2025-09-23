@@ -9,24 +9,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/products/${productId}`);
-        if (!response.ok) throw new Error('not found');
-        const product = await response.json();
+        const { data: product, error } = await supabase
+            .from('products')
+            .select('*')
+            .eq('id', productId)
+            .single();
+
+        if (error) throw error;
 
         document.title = `${product.name} - MG's Tailoring`;
-        const sizeOptions = (product.sizes || []).map(s => `<option value="${s}">${escapeHtml(s)}</option>`).join('');
+        const sizeOptions = (product.sizes || []).map(s => `<option value="${s}">${s}</option>`).join('');
 
         if (!contentArea) return;
         contentArea.innerHTML = `
             <div class="product-detail-layout">
                 <div class="product-detail-image">
-                    <img src="${normalizeImage(product.imageUrl)}" alt="${escapeHtml(product.name)}">
+                    <img src="${product.imageUrl}" alt="${product.name}">
                 </div>
                 <div class="product-detail-info">
-                    <h2>${escapeHtml(product.name)}</h2>
+                    <h2>${product.name}</h2>
                     <p class="product-price">₹${product.price}</p>
-                    <p class="product-description">${escapeHtml(product.description)}</p>
-                    <p class="product-fabric"><strong>Fabric:</strong> ${escapeHtml(product.fabric)}</p>
+                    <p class="product-description">${product.description}</p>
+                    <p class="product-fabric"><strong>Fabric:</strong> ${product.fabric}</p>
                     <div class="size-selection">
                         <label for="size-select">Select Size:</label>
                         <select id="size-select">${sizeOptions}</select>
@@ -64,25 +68,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
     } catch (error) {
+        console.error('Error fetching product details:', error);
         if (contentArea) contentArea.innerHTML = '<p>Could not load product details. Please try again later.</p>';
     }
 });
 
-function normalizeImage(url) {
-    if (!url) return 'images/fallback.jpg';
-    if (url.includes('images.unsplash.com') && !url.includes('auto=format')) {
-        return url.includes('?') ? `${url}&auto=format&fit=crop&w=800&q=80` : `${url}?auto=format&fit=crop&w=800&q=80`;
-    }
-    return url;
-}
-
-function escapeHtml(str) {
-    if (!str) return '';
-    return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
-}
-
 function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
     const cartCountEl = document.getElementById('cart-count');
     if (cartCountEl) {

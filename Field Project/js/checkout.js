@@ -109,7 +109,7 @@ function updateProgressBar(activeStep) {
 
 function launchRazorpay(totalAmount, orderDetails) {
     const options = {
-        key: 'rzp_test_RIAGAYcCA5VsTD',
+        key: 'rzp_test_ILz2eDRp37hV3b',
         amount: totalAmount * 100,
         currency: 'INR',
         name: 'MG\'s Tailoring',
@@ -132,11 +132,8 @@ function launchRazorpay(totalAmount, orderDetails) {
 
 async function completeOrder(orderDetails) {
     try {
-        await fetch('http://localhost:3000/orders', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(orderDetails)
-        });
+        const { error } = await supabase.from('orders').insert([orderDetails]);
+        if (error) throw error;
 
         localStorage.removeItem('cart');
         sessionStorage.setItem('finalOrder', JSON.stringify(orderDetails));
