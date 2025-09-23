@@ -1,4 +1,3 @@
-import { supabase } from './supabaseClient.js';
 document.addEventListener('DOMContentLoaded', () => {
 
     const registerForm = document.getElementById('register-form');
