@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function placeImages(count, elementHandler) {
         try {
-            const { data: photos, error } = await supabase
+            const { data: photos, error } = await supabaseClient
                 .from('products')
                 .select('imageUrl, name, category, id')
                 .limit(count);
