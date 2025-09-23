@@ -14,7 +14,7 @@ async function loadProducts() {
 
     try {
         if (categoryList) {
-            const { data: categories, error } = await supabase.from('categories').select('name');
+            const { data: categories, error } = await supabaseClient.from('categories').select('name');
             if (error) throw error;
             if (categories) {
                 categoryList.innerHTML = '<li><a href="products.html">All Products</a></li>';
@@ -30,7 +30,7 @@ async function loadProducts() {
     }
 
     try {
-        let query = supabase.from('products').select('*');
+        let query = supabaseClient.from('products').select('*');
         if (category) {
             query = query.eq('category', category);
         }
@@ -76,7 +76,7 @@ async function loadProducts() {
 
 async function openQuickView(productId) {
     try {
-        const { data: product, error } = await supabase.from('products').select('*').eq('id', productId).single();
+        const { data: product, error } = await supabaseClient.from('products').select('*').eq('id', productId).single();
         if (error) throw error;
         
         const modal = document.createElement('div');

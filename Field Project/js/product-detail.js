@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const { data: product, error } = await supabase
+        const { data: product, error } = await supabaseClient
             .from('products')
             .select('*')
             .eq('id', productId)

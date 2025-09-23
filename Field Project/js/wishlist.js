@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const { data: products, error } = await supabase
+        const { data: products, error } = await supabaseClient
             .from('products')
             .select('*')
             .in('id', wishlistIds);

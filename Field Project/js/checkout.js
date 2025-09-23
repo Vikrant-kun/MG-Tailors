@@ -132,7 +132,7 @@ function launchRazorpay(totalAmount, orderDetails) {
 
 async function completeOrder(orderDetails) {
     try {
-        const { error } = await supabase.from('orders').insert([orderDetails]);
+        const { error } = await supabaseClient.from('orders').insert([orderDetails]);
         if (error) throw error;
 
         localStorage.removeItem('cart');

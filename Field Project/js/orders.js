@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const { data: orders, error } = await supabase
+        const { data: orders, error } = await supabaseClient
             .from('orders')
             .select('*')
             .eq('userId', loggedInUser.id)
