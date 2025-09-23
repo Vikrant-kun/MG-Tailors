@@ -1,3 +1,4 @@
+import { supabase } from './supabaseClient.js';
 document.addEventListener('DOMContentLoaded', () => {
 
     const registerForm = document.getElementById('register-form');
@@ -80,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     if (modal) {
         window.onclick = function(event) {
             if (event.target == modal) {
