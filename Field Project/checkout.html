@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - MG's Tailoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body class="fade-in">
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="nav-brand">MG's Tailoring</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li class="nav-icon-item">
+                    <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="user-icon-btn"><i class="fas fa-user-circle"></i></a>
+                    <div class="dropdown-menu">
+                        <div class="user-links-logged-out"><a href="login.html">Login</a><a href="register.html">Register</a></div>
+                        <div class="user-links-logged-in"><a href="cart.html">Your Cart</a><a href="orders.html">Your Orders</a><a href="#">Wishlist</a><a href="#" id="logout-link">Logout</a></div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <div class="checkout-progress">
+            <div id="step-shipping" class="progress-step active">Shipping & Payment</div>
+            <div id="step-review" class="progress-step">Review</div>
+            <div id="step-payment" class="progress-step">Confirmation</div>
+        </div>
+        <div id="checkout-welcome"></div>
+        <div class="form-container">
+            <form id="checkout-form" class="checkout-form">
+                <div class="form-section">
+                    <h3>Shipping Details</h3>
+                    <div class="form-group" id="name-group"><label for="name">Full Name</label><input type="text" id="name" required></div>
+                    <div class="form-group"><label for="address">Address</label><input type="text" id="address" required></div>
+                    <div class="form-group"><label for="phone">Phone Number</label><input type="tel" id="phone" required></div>
+                </div>
+                <div class="form-section">
+                    <h3>Payment Method</h3>
+                    <div class="payment-options">
+                        <label><input type="radio" name="payment" value="cod" checked> Cash on Delivery (COD)</label>
+                        <label><input type="radio" name="payment" value="upi"> UPI</label>
+                        <label><input type="radio" name="payment" value="netbanking"> Netbanking</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Proceed to Review</button>
+            </form>
+        </div>
+    </main>
+    
+    <footer class="site-footer"></footer>
+    <div id="custom-modal" class="modal"></div>
+
+     <script src="js/script.js"></script>
+     <script src="js/checkout.js"></script>
+</body>
+</html>

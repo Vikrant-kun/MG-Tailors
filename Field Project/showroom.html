@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showroom - MG's Tailoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="fade-in">
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="nav-brand">MG's Tailoring</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li class="nav-icon-item">
+                    <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="user-icon-btn"><i class="fas fa-user-circle"></i></a>
+                    <div class="dropdown-menu">
+                        <div class="user-links-logged-out"><a href="login.html">Login</a><a href="register.html">Register</a></div>
+                        <div class="user-links-logged-in"><a href="cart.html">Your Cart</a><a href="orders.html">Your Orders</a><a href="wishlist.html">Wishlist</a><a href="style-quiz.html">Discover Your Style</a><a href="showroom.html">Explore Showroom</a><a href="track-order.html">Track Order</a><a href="#" id="logout-link">Logout</a></div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="swiper showroom-swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1617137968427-4dd47d38b7cb" alt="Bridal Collection">
+                <div class="slide-content">
+                    <h2>The Royal Wedding Collection</h2>
+                    <p>Exquisite bridal wear for your special day.</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1595777457583-14560d0751b3" alt="Evening Wear">
+                <div class="slide-content">
+                    <h2>Evening Elegance</h2>
+                    <p>Stunning gowns and dresses for parties and events.</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1588492248280-20153835e4b3" alt="Casual Chic">
+                <div class="slide-content">
+                    <h2>Casual Chic</h2>
+                    <p>Comfortable and stylish outfits for your everyday grace.</p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+    
+     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+     <script src="js/script.js"></script>
+     <script src="js/showroom.js"></script>
+</body>
+</html>

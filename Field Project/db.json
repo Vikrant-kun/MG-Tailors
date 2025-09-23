@@ -1,0 +1,560 @@
+{
+  "users": [
+    {
+      "id": "bdcb",
+      "name": "justt_vid",
+      "email": "vikrantvinchurkar12@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "a6d3",
+      "name": "justt_vid",
+      "email": "efs@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "cb52",
+      "name": "Vikrant",
+      "email": "vikrantvinchurkar12@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "1169",
+      "name": "Vikrant",
+      "email": "vikrantvinchurkar12@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "6484",
+      "name": "Ganesh",
+      "email": "ganesh@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "b6bf",
+      "name": "Manali",
+      "email": "manali@gmail.com",
+      "password": "123"
+    }
+  ],
+  "categories": [
+    {
+      "name": "blouses",
+      "id": "e92b"
+    },
+    {
+      "name": "gowns",
+      "id": "9982"
+    }
+  ],
+  "orders": [
+    {
+      "id": "6e6e",
+      "shipping": {
+        "name": "justt_vid",
+        "address": "Room no. 209, Salt Pan Road, Panchashil nagar, B.A.D. Marg, Wadala (E), Mumbai - 400037",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "cod",
+      "cart": [
+        {
+          "id": "3",
+          "name": "Velvet Princess Gown",
+          "price": 12500,
+          "imageUrl": "https://i.pinimg.com/originals/b1/9a/8c/b19a8c6501c9592c42022eeb04b63fd2.jpg",
+          "size": "XL",
+          "quantity": 1,
+          "category": "gowns"
+        }
+      ],
+      "userId": "bdcb",
+      "orderDate": "2025-09-16T06:20:01.686Z",
+      "totalAmount": 12540
+    },
+    {
+      "id": "5bad",
+      "shipping": {
+        "name": "justt_vid",
+        "address": "Room no. 209, Salt Pan Road, Panchashil nagar, B.A.D. Marg, Wadala (E), Mumbai - 400037",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "cod",
+      "cart": [],
+      "userId": "bdcb",
+      "orderDate": "2025-09-16T06:20:19.384Z",
+      "totalAmount": 40
+    },
+    {
+      "id": "840f",
+      "shipping": {
+        "name": "justt_vid",
+        "address": "Room no. 209, Salt Pan Road, Panchashil nagar, B.A.D. Marg, Wadala (E), Mumbai - 400037",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "cod",
+      "cart": [
+        {
+          "id": "1",
+          "name": "Classic Silk Blouse",
+          "price": 2500,
+          "imageUrl": "https://images.unsplash.com/photo-1619715613791-89d35b51ff81?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGluZGlhbiUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D",
+          "size": "Custom",
+          "quantity": 1,
+          "category": "blouses"
+        }
+      ],
+      "userId": "bdcb",
+      "orderDate": "2025-09-16T06:22:43.633Z",
+      "totalAmount": 2540
+    },
+    {
+      "id": "d510",
+      "shipping": {
+        "name": "justt_vid",
+        "address": "Room no. 209, Salt Pan Road, Panchashil nagar, B.A.D. Marg, Wadala (E), Mumbai - 400037",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "cod",
+      "cart": [
+        {
+          "id": "1",
+          "name": "Classic Silk Blouse",
+          "price": 2500,
+          "imageUrl": "https://images.unsplash.com/photo-1619715613791-89d35b51ff81?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGluZGlhbiUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D",
+          "size": "XL",
+          "quantity": 1,
+          "category": "blouses"
+        }
+      ],
+      "userId": "bdcb",
+      "orderDate": "2025-09-16T06:37:20.567Z",
+      "totalAmount": 2540
+    },
+    {
+      "id": "44a1",
+      "shipping": {
+        "name": "justt_vid",
+        "address": "Room no. 209, Salt Pan Road, Panchashil nagar, B.A.D. Marg, Wadala (E), Mumbai - 400037",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "cod",
+      "cart": [
+        {
+          "id": "10",
+          "name": "Simple Linen Blouse",
+          "price": 1200,
+          "imageUrl": "https://images.unsplash.com/photo-1571587289339-cb7da03fb5a6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW5kaWFuJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D",
+          "size": "S",
+          "quantity": 1,
+          "category": "blouses"
+        }
+      ],
+      "userId": "bdcb",
+      "orderDate": "2025-09-16T06:50:58.212Z",
+      "totalAmount": 1240
+    },
+    {
+      "id": "b5e5",
+      "shipping": {
+        "name": "justt_vid",
+        "address": "Room no. 209, Salt Pan Road, Panchashil nagar, B.A.D. Marg, Wadala (E), Mumbai - 400037",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "cod",
+      "cart": [
+        {
+          "id": "2",
+          "name": "Embroidered Net Blouse",
+          "price": 3200,
+          "imageUrl": "https://images.unsplash.com/photo-1599386642518-d1e8aa2875c5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGluZGlhbiUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D",
+          "size": "XL",
+          "quantity": 1,
+          "category": "blouses"
+        }
+      ],
+      "userId": "bdcb",
+      "orderDate": "2025-09-16T07:49:19.322Z",
+      "totalAmount": 3240
+    },
+    {
+      "id": "df16",
+      "shipping": {
+        "name": "justt_vid",
+        "address": "209, panchashil nagar",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "upi",
+      "cart": [
+        {
+          "id": "1",
+          "name": "Classic Silk Blouse",
+          "price": 2500,
+          "imageUrl": "https://images.unsplash.com/photo-1619715613791-89d35b51ff81?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGluZGlhbiUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D",
+          "size": "XL",
+          "quantity": 1,
+          "category": "blouses"
+        }
+      ],
+      "userId": "bdcb",
+      "orderDate": "2025-09-16T15:29:36.562Z",
+      "totalAmount": 2540,
+      "paymentId": "pay_RIK5PkbpTZB1jI"
+    },
+    {
+      "id": "68f3",
+      "shipping": {
+        "name": "justt_vid",
+        "address": "Room no. 209, Salt Pan Road, Panchashil nagar, B.A.D. Marg, Wadala (E), Mumbai - 400037",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "cod",
+      "cart": [
+        {
+          "id": "4",
+          "name": "Georgette Evening Gown",
+          "price": 9800,
+          "imageUrl": "https://i.etsystatic.com/28201529/r/il/564f59/3982734444/il_300x300.3982734444_j9lw.jpg",
+          "size": "L",
+          "quantity": 1,
+          "category": "gowns"
+        }
+      ],
+      "userId": "bdcb",
+      "orderDate": "2025-09-18T04:51:33.658Z",
+      "totalAmount": 9840
+    },
+    {
+      "id": "8d40",
+      "shipping": {
+        "name": "justt_vid",
+        "address": "Room no. 209, Salt Pan Road, Panchashil nagar, B.A.D. Marg, Wadala (E), Mumbai - 400037",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "upi",
+      "cart": [
+        {
+          "id": "2",
+          "name": "Embroidered Net Blouse",
+          "price": 3200,
+          "imageUrl": "https://images.unsplash.com/photo-1599386642518-d1e8aa2875c5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGluZGlhbiUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D",
+          "size": "XL",
+          "quantity": 1,
+          "category": "blouses"
+        }
+      ],
+      "userId": "bdcb",
+      "orderDate": "2025-09-18T04:51:54.590Z",
+      "totalAmount": 3240,
+      "paymentId": "pay_RIwIsbkM1YK05c"
+    },
+    {
+      "id": "6215",
+      "shipping": {
+        "name": "justt_vid",
+        "address": "Room no. 209, Salt Pan Road, Panchashil nagar, B.A.D. Marg, Wadala (E), Mumbai - 400037",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "cod",
+      "cart": [
+        {
+          "id": "2",
+          "name": "Embroidered Net Blouse",
+          "price": 3200,
+          "imageUrl": "https://images.unsplash.com/photo-1599386642518-d1e8aa2875c5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGluZGlhbiUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D",
+          "size": "L",
+          "quantity": 1,
+          "category": "blouses"
+        }
+      ],
+      "userId": "bdcb",
+      "orderDate": "2025-09-19T11:46:39.125Z",
+      "totalAmount": 3240
+    },
+    {
+      "id": "ea38",
+      "shipping": {
+        "name": "justt_vid",
+        "address": "Room no. 209, Salt Pan Road, Panchashil nagar, B.A.D. Marg, Wadala (E), Mumbai - 400037",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "upi",
+      "cart": [
+        {
+          "id": "1",
+          "name": "Classic Silk Blouse",
+          "price": 2500,
+          "imageUrl": "https://images.unsplash.com/photo-1619715613791-89d35b51ff81?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGluZGlhbiUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D",
+          "size": "L",
+          "quantity": 1,
+          "category": "blouses"
+        }
+      ],
+      "userId": "bdcb",
+      "orderDate": "2025-09-19T11:47:06.656Z",
+      "totalAmount": 2540,
+      "paymentId": "pay_RJRtgTWH8Af2iq"
+    },
+    {
+      "id": "f926",
+      "shipping": {
+        "name": "Manali",
+        "address": "Room no. 209, Salt Pan Road, Panchashil nagar, B.A.D. Marg, Wadala (E), Mumbai - 400037",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "cod",
+      "cart": [
+        {
+          "id": "2",
+          "name": "Embroidered Net Blouse",
+          "price": 3200,
+          "imageUrl": "https://images.unsplash.com/photo-1599386642518-d1e8aa2875c5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGluZGlhbiUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D",
+          "size": "XL",
+          "quantity": 1,
+          "category": "blouses"
+        }
+      ],
+      "userId": "b6bf",
+      "orderDate": "2025-09-21T15:51:03.544Z",
+      "totalAmount": 3240
+    },
+    {
+      "id": "0af5",
+      "shipping": {
+        "name": "Manali",
+        "address": "Room no. 209, Salt Pan Road, Panchashil nagar, B.A.D. Marg, Wadala (E), Mumbai - 400037",
+        "phone": "9694609829"
+      },
+      "paymentMethod": "upi",
+      "cart": [
+        {
+          "id": "2",
+          "name": "Embroidered Net Blouse",
+          "price": 3200,
+          "imageUrl": "https://images.unsplash.com/photo-1599386642518-d1e8aa2875c5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGluZGlhbiUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D",
+          "size": "L",
+          "quantity": 1,
+          "category": "blouses"
+        }
+      ],
+      "userId": "b6bf",
+      "orderDate": "2025-09-21T15:51:29.826Z",
+      "totalAmount": 3240,
+      "paymentId": "pay_RKJ88oqfQIUJVd"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Classic Silk Blouse",
+      "category": "blouses",
+      "price": 2500,
+      "fabric": "Pure Silk",
+      "description": "A timeless pure silk blouse with a classic round neck and elegant piping.",
+      "imageUrl": "https://images.unsplash.com/photo-1619715613791-89d35b51ff81?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGluZGlhbiUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "Custom"
+      ],
+      "reviews": [
+        {
+          "author": "Priya S.",
+          "text": "Absolutely perfect fitting and beautiful material!"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Embroidered Net Blouse",
+      "category": "blouses",
+      "price": 3200,
+      "fabric": "Fine Net with Satin Lining",
+      "description": "Features intricate floral embroidery and a modern boat-neck design.",
+      "imageUrl": "https://images.unsplash.com/photo-1599386642518-d1e8aa2875c5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGluZGlhbiUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "Custom"
+      ],
+      "reviews": [
+        {
+          "author": "Anjali R.",
+          "text": "Stunning work, received so many compliments."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Velvet Princess Gown",
+      "category": "gowns",
+      "price": 12500,
+      "fabric": "Royal Velvet",
+      "description": "A floor-length velvet gown with a flowing silhouette and subtle sequin work.",
+      "imageUrl": "https://i.pinimg.com/originals/b1/9a/8c/b19a8c6501c9592c42022eeb04b63fd2.jpg",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "Custom"
+      ],
+      "reviews": [
+        {
+          "author": "Neha M.",
+          "text": "Felt like a queen! The fit was impeccable."
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Georgette Evening Gown",
+      "category": "gowns",
+      "price": 9800,
+      "fabric": "Flowy Georgette",
+      "description": "An elegant, lightweight evening dress with a fitted bodice and A-line skirt.",
+      "imageUrl": "https://i.etsystatic.com/28201529/r/il/564f59/3982734444/il_300x300.3982734444_j9lw.jpg",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "Custom"
+      ],
+      "reviews": [
+        {
+          "author": "Kavita J.",
+          "text": "The fabric feels amazing and it drapes beautifully."
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Modern Art-Silk Blouse",
+      "category": "blouses",
+      "price": 1800,
+      "fabric": "Art-Silk",
+      "description": "A contemporary blouse with geometric patterns and a stylish back opening.",
+      "imageUrl": "https://images.unsplash.com/photo-1629936059226-86125b062310?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fE1vZGVybiUyMEFydCUyMFNpbGslMjBCbG91c2V8ZW58MHx8MHx8fDA%3D",
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "6",
+      "name": "Cotton Daily Blouse",
+      "category": "blouses",
+      "price": 950,
+      "fabric": "Pure Cotton",
+      "description": "A comfortable and breathable pure cotton blouse for daily wear.",
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1682096067532-3e89ab323ebf?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8SW5kaWFuJTIwJTIwQmxvdXNlfGVufDB8fDB8fHww",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "7",
+      "name": "Sequin Party Blouse",
+      "category": "blouses",
+      "price": 4100,
+      "fabric": "Sequin Fabric",
+      "description": "A dazzling, fully-sequined blouse perfect for parties and receptions.",
+      "imageUrl": "https://images.unsplash.com/photo-1669197803553-54511fbb7e55?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8U2VxdWluJTIwUGFydHklMjBCbG91c2V8ZW58MHx8MHx8fDA%3D",
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "8",
+      "name": "A-Line Ball Gown",
+      "category": "gowns",
+      "price": 15000,
+      "fabric": "Tulle and Satin",
+      "description": "A classic A-line ball gown with a layered tulle skirt and satin bodice.",
+      "imageUrl": "https://images.unsplash.com/photo-1703812572795-2e2c87db6c2c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8TGluZW4lMjBiYWxsJTIwZ293bnxlbnwwfHwwfHx8MA%3D%3D",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "Custom"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "9",
+      "name": "Mermaid Style Gown",
+      "category": "gowns",
+      "price": 13200,
+      "fabric": "Stretch Crepe",
+      "description": "A form-fitting mermaid gown that accentuates curves, with a dramatic flare.",
+      "imageUrl": "https://images.unsplash.com/photo-1610202631408-fa6ba0f39ca3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGluZGlhbiUyMGZhc2hpb258ZW58MHx8MHx8fDA%3D",
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "10",
+      "name": "Simple Linen Blouse",
+      "category": "blouses",
+      "price": 1200,
+      "fabric": "Linen Blend",
+      "description": "An understated and elegant linen blouse for a sophisticated, casual look.",
+      "imageUrl": "https://images.unsplash.com/photo-1571587289339-cb7da03fb5a6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW5kaWFuJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "11",
+      "name": "Chiffon Maxi Gown",
+      "category": "gowns",
+      "price": 7500,
+      "fabric": "Light Chiffon",
+      "description": "A breezy and beautiful chiffon maxi gown, perfect for beach weddings or summer events.",
+      "imageUrl": "https://images.unsplash.com/photo-1619516388835-2b60acc4049e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aW5kaWFuJTIwY2xvdGhpbmd8ZW58MHx8MHx8fDA%3D",
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "12",
+      "name": "High-Neck Brocade Blouse",
+      "category": "blouses",
+      "price": 3500,
+      "fabric": "Brocade Silk",
+      "description": "A regal high-neck blouse made from rich brocade silk, suitable for grand occasions.",
+      "imageUrl": "https://images.unsplash.com/photo-1616583936499-d4116e7e2e76?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kaWFuJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "Custom"
+      ],
+      "reviews": []
+    }
+  ]
+}
