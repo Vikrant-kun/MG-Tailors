@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 .select('imageUrl, name, category, id')
                 .limit(count);
 
+            console.log("✅ photos:", photos);
+            console.log("❌ error:", error);
             if (error) throw error;
             elementHandler(photos);
         } catch (error) {
