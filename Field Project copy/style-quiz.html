@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Your Style - MG's Tailoring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body class="fade-in">
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="nav-brand">MG's Tailoring</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li class="nav-icon-item">
+                    <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i><span id="cart-count">0</span></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="user-icon-btn"><i class="fas fa-user-circle"></i></a>
+                    <div class="dropdown-menu">
+                        <div class="user-links-logged-out"><a href="login.html">Login</a><a href="register.html">Register</a></div>
+                        <div class="user-links-logged-in"><a href="cart.html">Your Cart</a><a href="orders.html">Your Orders</a><a href="wishlist.html">Wishlist</a><a href="style-quiz.html">Discover Your Style</a><a href="showroom.html">Explore Showroom</a><a href="#" id="logout-link">Logout</a></div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <div id="quiz-container">
+            <div class="quiz-question active" id="question-1">
+                <h2>What's the Occasion?</h2>
+                <div class="quiz-options image-options">
+                    <div class="option" data-style="wedding">
+                        <img src="https://images.unsplash.com/photo-1505932794465-147d1f1b2c97?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW5kaWFuJTIwd2VkZGluZ3xlbnwwfHwwfHx8MA%3D%3D" alt="Wedding">
+                        <h4>Wedding</h4>
+                    </div>
+                    <div class="option" data-style="party">
+                        <img src="https://plus.unsplash.com/premium_photo-1670333351937-68cb2735a0fd?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGFydHl8ZW58MHx8MHx8fDA%3D" alt="Party">
+                        <h4>Party</h4>
+                    </div>
+                    <div class="option" data-style="casual">
+                        <img src="https://images.unsplash.com/photo-1740381918234-d364ff4c5cb4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2FzdWFsJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D" alt="Casual">
+                        <h4>Casual</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-question" id="question-2">
+                <h2>Which Vibe Suits You?</h2>
+                <div class="quiz-options text-options">
+                    <div class="option" data-style="classic">Elegant & Classic</div>
+                    <div class="option" data-style="bold">Modern & Bold</div>
+                    <div class="option" data-style="minimalist">Simple & Minimalist</div>
+                </div>
+            </div>
+
+            <div class="quiz-question" id="question-3">
+                <h2>Pick a Color Palette</h2>
+                <div class="quiz-options color-options">
+                    <div class="option" data-style="royal">
+                        <div class="color-swatch" style="background: #800020;"></div>
+                        <div class="color-swatch" style="background: #000080;"></div>
+                        <div class="color-swatch" style="background: #FFD700;"></div>
+                    </div>
+                    <div class="option" data-style="pastel">
+                        <div class="color-swatch" style="background: #FFB6C1;"></div>
+                        <div class="color-swatch" style="background: #ADD8E6;"></div>
+                        <div class="color-swatch" style="background: #98FB98;"></div>
+                    </div>
+                    <div class="option" data-style="earthy">
+                        <div class="color-swatch" style="background: #D2B48C;"></div>
+                        <div class="color-swatch" style="background: #8FBC8F;"></div>
+                        <div class="color-swatch" style="background: #A0522D;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="quiz-results" style="display: none;">
+            <h2>Your Personalized Style Mood Board</h2>
+            <div id="results-grid" class="gallery-grid">
+                <p class="loading-message">Curating your style...</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <h4>About MG's Tailoring</h4>
+                <p>Crafting bespoke garments with a passion for quality and a commitment to the perfect fit. Serving Mumbai with pride since 2005.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, Mumbai</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> contact@mgstailoring.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MG's Tailoring Project. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+     <script src="js/script.js"></script>
+     <script src="js/style-quiz.js"></script>
+</body>
+</html>
