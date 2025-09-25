@@ -6,7 +6,7 @@ A feature-rich e-commerce website for a local tailoring business, built as a col
 
 ## 📸 Screenshots
 
-![Screenshot 2025-09-25 at 2.06.51 PM.png](https://github.com/user-attachments/assets/71de4ea8-ade2-4d50-b683-8cd07027c1b8)
+![Homepage Screenshot](https://github.com/user-attachments/assets/f8f0fa47-2c18-4fba-911e-c278a1ca1c99)
 
 ---
 
