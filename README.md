@@ -1,4 +1,4 @@
-# MG's Tailoring Website Tailoring Website 🛍️
+# MG's Tailoring Website 🛍️
 
 A feature-rich e-commerce website for a local tailoring business, built as a college field project for my mom's shop. The site is fully responsive, interactive, and demonstrates a complete user journey from browsing to checkout.
 
