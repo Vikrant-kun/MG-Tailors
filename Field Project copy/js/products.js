@@ -31,6 +31,9 @@ async function loadProducts() {
     try {
         const url = category ? `http://localhost:3000/products?category=${encodeURIComponent(category)}` : `http://localhost:3000/products`;
         const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const products = await response.json();
         
         if (!productGrid) return;
@@ -74,6 +77,9 @@ async function loadProducts() {
 async function openQuickView(productId) {
     try {
         const response = await fetch(`http://localhost:3000/products/${productId}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const product = await response.json();
 
         const modal = document.createElement('div');
@@ -119,6 +125,12 @@ async function openQuickView(productId) {
                 wishlistBtn.classList.add('active');
                 wishlistBtn.innerHTML = '<i class="fas fa-heart"></i>';
                 showTempMessage('Added to Wishlist!');
+            } else {
+                currentWishlist = currentWishlist.filter(id => id !== product.id);
+                localStorage.setItem('wishlist', JSON.stringify(currentWishlist));
+                wishlistBtn.classList.remove('active');
+                wishlistBtn.innerHTML = '<i class="far fa-heart"></i>';
+                showTempMessage('Removed from Wishlist!');
             }
         });
 
