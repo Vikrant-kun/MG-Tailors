@@ -143,7 +143,7 @@
           "id": "10",
           "name": "Simple Linen Blouse",
           "price": 1200,
-          "imageUrl": "https://images.unsplash.com/photo-1571587289339-cb7da03fb5a6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW5kaWFuJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D",
+          "imageUrl": "https://images.unsplash.com/photo-1571587289339-cb7da03fb5a6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW5kaWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D",
           "size": "S",
           "quantity": 1,
           "category": "blouses"
@@ -639,7 +639,7 @@
       "price": 15000,
       "fabric": "Tulle and Satin",
       "description": "A classic A-line ball gown with a layered tulle skirt and satin bodice.",
-      "imageUrl": "https://images.unsplash.com/photo-1703812572795-2e2c87db6c2c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8TGluZW4lMjBiYWxsJTIwZ293bnxlbnwwfHwwfHx8MA%3D%3D",
+      "imageUrl": "https://images.unsplash.com/photo-1703812572795-2e2c87db6c2c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8TGluZW4lMjBCYWxsJTIwZ293bnxlbnwwfHwwfHw%3D%3D",
       "sizes": [
         "S",
         "M",
@@ -682,7 +682,7 @@
       "price": 1200,
       "fabric": "Linen Blend",
       "description": "An understated and elegant linen blouse for a sophisticated, casual look.",
-      "imageUrl": "https://images.unsplash.com/photo-1571587289339-cb7da03fb5a6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW5kaWFuJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D",
+      "imageUrl": "https://images.unsplash.com/photo-1571587289339-cb7da03fb5a6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW5kaWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D",
       "sizes": [
         "S",
         "M",
@@ -726,7 +726,7 @@
       "price": 3500,
       "fabric": "Brocade Silk",
       "description": "A regal high-neck blouse made from rich brocade silk, suitable for grand occasions.",
-      "imageUrl": "https://images.unsplash.com/photo-1616583936499-d4116e7e2e76?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kaWFuJTIwZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D",
+      "imageUrl": "https://images.unsplash.com/photo-1616583936499-d4116e7e2e76?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kaWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D",
       "sizes": [
         "S",
         "M",
