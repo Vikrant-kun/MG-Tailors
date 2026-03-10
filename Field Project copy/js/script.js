@@ -68,7 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 actionBtn.textContent = 'OK';
                 actionBtn.onclick = () => {
                     document.querySelector('body').classList.add('fade-out');
-                    setTimeout(() => { window.location.href = 'index.html'; }, 500);
+                    setTimeout(() => { 
+                        document.querySelector('body').classList.remove('fade-in', 'fade-out');
+                        window.location.href = 'index.html'; 
+                    }, 500);
                 };
             };
             cancelBtn.onclick = () => {
@@ -88,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 event.preventDefault();
                 document.querySelector('body').classList.add('fade-out');
                 setTimeout(function() {
+                    document.querySelector('body').classList.remove('fade-in', 'fade-out');
                     window.location.href = url;
                 }, 500);
             });
