@@ -16,24 +16,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         const fetchPromises = wishlist.map(id => fetch(`http://localhost:3000/products/${id}`).then(res => res.json()));
-        const products = await Promise.allSettled(fetchPromises).then(results => results.map(result => result.status === 'fulfilled' ? result.value : null));
+        const results = await Promise.allSettled(fetchPromises);
+        const products = results.map(result => result.status === 'fulfilled' ? result.value : null).filter(product => product !== null);
         
         wishlistGrid.innerHTML = '';
         products.forEach(product => {
-            if (product) {
-                const productLink = document.createElement('a');
-                productLink.href = `products.html?category=${product.category}&quickview_id=${product.id}`;
-                
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <div class="product-image"><img src="${product.imageUrl}" alt="${product.name}"></div>
-                    <div class="product-info"><h3>${product.name}</h3><p>₹${product.price}</p></div>
-                `;
-                
-                productLink.appendChild(card);
-                wishlistGrid.appendChild(productLink);
-            }
+            const productLink = document.createElement('a');
+            productLink.href = `products.html?category=${product.category}&quickview_id=${product.id}`;
+            
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <div class="product-image"><img src="${product.imageUrl}" alt="${product.name}"></div>
+                <div class="product-info"><h3>${product.name}</h3><p>₹${product.price}</p></div>
+            `;
+            
+            productLink.appendChild(card);
+            wishlistGrid.appendChild(productLink);
         });
 
     } catch (error) {
