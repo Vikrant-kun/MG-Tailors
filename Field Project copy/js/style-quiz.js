@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     options.forEach(option => {
         option.addEventListener('click', () => {
             const style = option.dataset.style;
-            scores[style]++;
+            if (style in scores) {
+                scores[style]++;
+            }
             
             option.parentElement.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
             option.classList.add('selected');
@@ -54,6 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         try {
             const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&per_page=9&client_id=${apiKey}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const data = await response.json();
             const photos = data.results;
 
@@ -61,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             photos.forEach(photo => {
                 const item = document.createElement('div');
                 item.className = 'gallery-item';
-                item.innerHTML = `<img src="${photo.urls.small}" alt="${photo.alt_description}">`;
+                item.innerHTML = `<img src="${photo.urls.small}" alt="${photo.alt_description || ''}">`;
                 resultsGrid.appendChild(item);
             });
 
