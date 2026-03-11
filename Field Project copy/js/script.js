@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const allLinks = document.querySelectorAll('a');
     allLinks.forEach(function(link) {
         const url = link.getAttribute('href');
-        if (url && !url.startsWith('#') && !url.startsWith('http')) {
+        if (url && !url.startsWith('#') && !url.startsWith('http') && !url.startsWith('https')) {
             const isDropdownLink = link.closest('.dropdown-menu');
             if (isDropdownLink) return;
 
