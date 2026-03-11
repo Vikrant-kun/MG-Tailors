@@ -1,3 +1,9 @@
+function broken( {
+    const x = 
+    return x..value
+}
+```
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const registerForm = document.getElementById('register-form');
