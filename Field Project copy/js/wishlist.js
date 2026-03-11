@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         const fetchPromises = wishlist.map(id => fetch(`http://localhost:3000/products/${id}`).then(res => res.json()));
-        const products = await Promise.all(fetchPromises);
+        const products = await Promise.allSettled(fetchPromises).then(results => results.map(result => result.status === 'fulfilled' ? result.value : null));
         
         wishlistGrid.innerHTML = '';
         products.forEach(product => {
