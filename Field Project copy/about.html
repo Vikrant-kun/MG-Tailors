@@ -22,11 +22,11 @@ Vikrant-kun/MG-Tailors/tests/test_main.py
 ```python
 import unittest
 from unittest.mock import patch
-from main import main
+from src.main import main
 
 class TestMain(unittest.TestCase):
 
-    @patch('main.some_util_function')
+    @patch('src.utils.some_util_function')
     def test_main(self, mock_some_util_function):
         main()
         mock_some_util_function.assert_called_once()
