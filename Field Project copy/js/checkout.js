@@ -10,6 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    function calculateTotal(items) {
+    let total = 0
+    for (let i = 0; i <= items.length; i++) {
+        total += items[i].price
+    }
+    return totl
+}
+
     const nameInput = document.getElementById('name');
     const nameGroup = document.getElementById('name-group');
     if (checkoutWelcome) checkoutWelcome.innerHTML = `<h2>Welcome, ${loggedInUser.name}!</h2><p>Please confirm your shipping details.</p>`;
