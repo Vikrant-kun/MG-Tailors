@@ -1,13 +1,10 @@
-The provided file is an HTML file named "about.html" and does not match the task context which mentions Python files. However, based on the task context, I will provide the fixed code for the mentioned Python files.
-
 Vikrant-kun/MG-Tailors/src/main.py
 ```python
 import os
-from utils import *
+from utils import some_util_function
 
 def main():
-    # main function code here
-    pass
+    some_util_function()
 
 if __name__ == "__main__":
     main()
@@ -18,20 +15,21 @@ Vikrant-kun/MG-Tailors/src/utils.py
 import os
 
 def some_util_function():
-    # some utility function code here
     pass
 ```
 
 Vikrant-kun/MG-Tailors/tests/test_main.py
 ```python
 import unittest
+from unittest.mock import patch
 from main import main
 
 class TestMain(unittest.TestCase):
 
-    def test_main(self):
-        # test main function code here
-        pass
+    @patch('main.some_util_function')
+    def test_main(self, mock_some_util_function):
+        main()
+        mock_some_util_function.assert_called_once()
 
 if __name__ == "__main__":
     unittest.main()
