@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             confirmBtn.onclick = () => {
                 localStorage.removeItem('loggedInUser');
-                modalIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
+                modalIcon.innerHTML = '';
                 modalMessage.textContent = 'You have been logged out successfully.';
                 confirmBtn.style.display = 'none';
                 cancelBtn.style.display = 'none';
