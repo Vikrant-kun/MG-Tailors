@@ -1,9 +1,3 @@
-function broken( {
-    const x = 
-    return x..value
-}
-```
-
 document.addEventListener('DOMContentLoaded', () => {
 
     const registerForm = document.getElementById('register-form');
@@ -14,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmBtn = document.getElementById('modal-button-confirm');
     const actionBtn = document.getElementById('modal-button-action');
     const cancelBtn = document.getElementById('modal-button-cancel');
+    const logoutBtn = document.getElementById('logout-button');
 
     function showModal(message, buttonText, onButtonClick, type = 'default') {
         if (!modal) return;
@@ -27,6 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
         confirmBtn.style.display = 'none';
         cancelBtn.style.display = 'none';
         modal.style.display = 'block';
+    }
+
+    function logoutUser() {
+        localStorage.removeItem('loggedInUser');
+        window.location.href = 'login.html';
     }
 
     if (registerForm) {
@@ -96,6 +96,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (error) { console.error('Error:', error); }
         });
+    }
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', logoutUser);
     }
 
     if (modal) {
