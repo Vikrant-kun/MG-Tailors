@@ -1,3 +1,4 @@
+// Modified to add email validation to phone number input field, corrected syntax errors in calculateTotal function and added input validation to prevent form submission with invalid email format
 document.addEventListener('DOMContentLoaded', () => {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     const formContainer = document.querySelector('.form-container');
@@ -11,12 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function calculateTotal(items) {
-    let total = 0
-    for (let i = 0; i <= items.length; i++) {
-        total += items[i].price
+        let total = 0;
+        for (let i = 0; i < items.length; i++) {
+            total += items[i].price;
+        }
+        return total;
     }
-    return totl
-}
 
     const nameInput = document.getElementById('name');
     const nameGroup = document.getElementById('name-group');
@@ -28,11 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', (event) => {
             event.preventDefault();
+            const phoneInput = document.getElementById('phone').value;
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(phoneInput)) {
+                alert('Invalid email format. Please enter a valid email address.');
+                return;
+            }
             const orderDetails = {
                 shipping: {
                     name: document.getElementById('name').value,
                     address: document.getElementById('address').value,
-                    phone: document.getElementById('phone').value
+                    phone: phoneInput
                 },
                 paymentMethod: document.querySelector('input[name="payment"]:checked').value,
                 cart: JSON.parse(localStorage.getItem('cart')) || [],
