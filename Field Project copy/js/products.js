@@ -1,3 +1,4 @@
+// Modified to check for DOM error and return early if productGrid element is not found, also corrected the return statement to include a console error message for better debugging
 async function loadProducts() {
     const params = new URLSearchParams(window.location.search);
     const category = params.get('category');
@@ -36,7 +37,10 @@ async function loadProducts() {
         }
         const products = await response.json();
         
-        if (!productGrid) return;
+        if (!productGrid) {
+            console.error("Could not find product grid element in the DOM.");
+            return;
+        }
         productGrid.innerHTML = '';
 
         if (!products || products.length === 0) {
