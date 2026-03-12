@@ -37,11 +37,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const orderCard = document.createElement('div');
             orderCard.className = 'order-card';
+            let totalAmount = order.totalAmount;
+            let shippingFee = 0;
+            if (totalAmount < 50) {
+                shippingFee = 5;
+                totalAmount += shippingFee;
+            }
             orderCard.innerHTML = `
                 <div class="order-header">
                     <div><strong>Order Date:</strong><br>${orderDate}</div>
-                    <div><strong>Total:</strong><br>₹${order.totalAmount}</div>
+                    <div><strong>Total:</strong><br>$${totalAmount.toFixed(2)}</div>
                     <div><strong>Shipped To:</strong><br>${order.shipping.address}</div>
+                    <div id="cart-total">Subtotal: $${(order.totalAmount).toFixed(2)} 
+                    ${shippingFee > 0 ? ` + $${shippingFee.toFixed(2)} shipping` : ''} = $${totalAmount.toFixed(2)}</div>
                 </div>
                 <div class="order-body">
                     ${itemsHTML}
