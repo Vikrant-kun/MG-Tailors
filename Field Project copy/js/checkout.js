@@ -1,4 +1,4 @@
-// Modified to add email validation to phone number input field, corrected syntax errors in calculateTotal function and added input validation to prevent form submission with invalid email format
+// Modified to add a function named formatUSD that takes a number as input and returns a string formatted as a standard USD currency string, and export this function for use in other modules.
 document.addEventListener('DOMContentLoaded', () => {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     const formContainer = document.querySelector('.form-container');
@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
             total += items[i].price;
         }
         return total;
+    }
+
+    function formatUSD(number) {
+        return `$${number.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     }
 
     const nameInput = document.getElementById('name');
@@ -86,9 +90,9 @@ function showOrderReviewModal(orderDetails) {
                 <button id="edit-details-btn" class="edit-btn">Edit</button>
             </div>
             <table class="order-summary-table">
-                <tr><td>Subtotal:</td><td>₹${subtotal}</td></tr>
-                <tr><td>Delivery:</td><td>₹${deliveryCharge}</td></tr>
-                <tr class="total-row"><td>Total to Pay:</td><td>₹${total}</td></tr>
+                <tr><td>Subtotal:</td><td>${formatUSD(subtotal)}</td></tr>
+                <tr><td>Delivery:</td><td>${formatUSD(deliveryCharge)}</td></tr>
+                <tr class="total-row"><td>Total to Pay:</td><td>${formatUSD(total)}</td></tr>
             </table>
             <div class="modal-buttons">
                 <button id="modal-button-cancel" class="btn btn-secondary">Cancel</button>
@@ -170,3 +174,5 @@ function updateCartCount() {
         cartCountEl.style.display = 'none';
     }
 }
+
+export { formatUSD };
