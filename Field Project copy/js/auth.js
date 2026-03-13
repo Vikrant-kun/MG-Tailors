@@ -1,3 +1,4 @@
+// Safety correction: Implemented password hashing using crypto-js library to secure user passwords, and modified login logic to compare hashed passwords.
 document.addEventListener('DOMContentLoaded', () => {
 
     const registerForm = document.getElementById('register-form');
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (registerForm) {
+        const CryptoJS = require("crypto-js");
         registerForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const name = event.target.username.value;
@@ -47,7 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                const newUser = { name, email, password };
+                const hashedPassword = CryptoJS.SHA256(password).toString();
+                const newUser = { name, email, password: hashedPassword };
                 const createResponse = await fetch('http://localhost:3000/users', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -68,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (loginForm) {
+        const CryptoJS = require("crypto-js");
         loginForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const email = event.target.email.value;
@@ -83,7 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 } else {
                     const user = users[0];
-                    if (user.password === password) {
+                    const hashedInput = CryptoJS.SHA256(password).toString();
+                    if (user.password === hashedInput) {
                         localStorage.setItem('loggedInUser', JSON.stringify(user));
                         showModal('Login successful! Welcome back.', 'Continue', () => {
                             window.location.href = 'index.html';
