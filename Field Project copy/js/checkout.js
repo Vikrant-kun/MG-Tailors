@@ -1,4 +1,4 @@
-// Modified to add a function named formatUSD that takes a number as input and returns a string formatted as a standard USD currency string, and export this function for use in other modules.
+// Modified to update phone input validation to correctly check for phone number format and ensure the payment method is correctly retrieved from the radio buttons, also corrected emailRegex to phoneRegex for phone number validation.
 document.addEventListener('DOMContentLoaded', () => {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     const formContainer = document.querySelector('.form-container');
@@ -34,9 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
         checkoutForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const phoneInput = document.getElementById('phone').value;
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            if (!emailRegex.test(phoneInput)) {
-                alert('Invalid email format. Please enter a valid email address.');
+            const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+            if (!phoneRegex.test(phoneInput)) {
+                alert('Invalid phone number format. Please enter a valid phone number (XXX-XXX-XXXX).');
                 return;
             }
             const orderDetails = {
