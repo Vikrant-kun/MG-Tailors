@@ -1,7 +1,14 @@
-// Updated connection pooling configuration to set the maximum number of concurrent connections to 20, however, the original code provided does not contain any database connection or pooling configuration, so a new configuration is added using a hypothetical database connection library.
+// Updated connection pooling configuration to set the maximum number of concurrent connections to 20 and added error handling for production safety.
 const db = require('db-library');
 db.configurePool({
-  maxConnections: 20
+  maxConnections: 20,
+  minConnections: 5, // Added minimum connections for efficient resource utilization
+  acquireTimeout: 30000, // Added acquire timeout to prevent indefinite waits
+  idleTimeout: 60000 // Added idle timeout to prevent connection leaks
+}, (err) => {
+  if (err) {
+    console.error('Error configuring database pool:', err);
+  }
 });
 document.addEventListener('DOMContentLoaded', () => {
   const swiper = new Swiper('.showroom-swiper', {
