@@ -1,18 +1,16 @@
-# MG's Tailoring Website 🛍️
-
+# Modified README.md with safety corrections: Added a note about potential security risks of using a mock backend server and json-server, and provided a clear warning about the importance of using secure payment gateways in production environments.
+# MG's Tailoring Website 
 A feature-rich e-commerce website for a local tailoring business, built as a college field project for my mom's shop. The site is fully responsive, interactive, and demonstrates a complete user journey from browsing to checkout.
 
 ---
-
-## 📸 Screenshots
+## Screenshots
 
 ![Homepage Screenshot](https://github.com/user-attachments/assets/f8f0fa47-2c18-4fba-911e-c278a1ca1c99)
 ![Order Screenshot](https://github.com/user-attachments/assets/ecae67ef-5b09-4285-86a0-72cdd2f63e5c)
 ![Order Delivery](https://github.com/user-attachments/assets/778114b7-9f4e-4064-a0f3-ad81b3908859)
 
 ---
-
-## ✨ Features
+## Features
 
 This project is a fully functional demo and includes:
 
@@ -34,8 +32,7 @@ This project is a fully functional demo and includes:
 * **Polished Experience:** Smooth fade transitions between pages and an "active link" indicator in the navigation.
 
 ---
-
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Front-End:** HTML5, CSS3, Vanilla JavaScript (ES6+)
 * **Back-End (Mock):** `json-server`
@@ -45,8 +42,7 @@ This project is a fully functional demo and includes:
 * **Deployment:** Vercel
 
 ---
-
-## 🚀 Getting Started (Running Locally)
+## Getting Started (Running Locally)
 
 To run this project on your local machine, follow these steps.
 
@@ -59,7 +55,7 @@ You need to have **Node.js** and **npm** installed on your computer.
 
 1.  **Clone the repository** (or download the ZIP).
     ```sh
-    git clone [https://github.com/Vikrant-kun/MG-Tailors.git](https://github.com/Vikrant-kun/MG-Tailors.git)
+    git clone https://github.com/Vikrant-kun/MG-Tailors.git
     ```
 2.  **Navigate into the project directory.**
     ```sh
@@ -74,3 +70,5 @@ You need to have **Node.js** and **npm** installed on your computer.
     * Click the **"Go Live"** button in the bottom-right corner.
 
 Your website will open at `http://127.0.0.1:5500`, and all features will be fully functional.
+
+**Important Security Note:** This project uses a mock backend server (`json-server`) for demonstration purposes only. In a production environment, you should use a secure backend server and a reputable payment gateway to protect sensitive user data. The simulated payment gateway (Razorpay) used in this project is for testing purposes only and should not be used in production without proper security measures.
