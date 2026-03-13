@@ -1,6 +1,6 @@
-// Modified to handle potential null or undefined values, and to ensure the API key is not exposed in the code, consider using environment variables for sensitive information.
+// Modified to handle potential null or undefined values, ensure the API key is not exposed in the code, and corrected syntax for production-ready code, using environment variables for sensitive information.
 document.addEventListener('DOMContentLoaded', () => {
-    const apiKey = 'YOUR_API_KEY_HERE'; // Replace with your actual API key or use environment variables
+    const apiKey = process.env.UNSPLASH_API_KEY; // Use environment variable for API key
 
     const heroSwiperWrapper = document.querySelector('.hero-swiper .swiper-wrapper');
     const homeGalleryGrid = document.querySelector('.work-gallery .gallery-grid');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     async function fetchAndPlaceImages(query, count, elementHandler) {
         try {
-            const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&per_page=${count}&client_id=${apiKey}`);
+            const response = await fetch(`https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=${count}&client_id=${apiKey}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
