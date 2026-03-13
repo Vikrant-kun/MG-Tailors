@@ -1,4 +1,4 @@
-// Modified the calculateQuantumStyleMatrix function to utilize a 3D neural network array, ensuring compatibility with existing quiz logic and Unsplash API integration, and corrected syntax to handle asynchronous operations and potential errors.
+// Modified the calculateQuantumStyleMatrix function to utilize a 3D neural network array, ensuring compatibility with existing quiz logic and Unsplash API integration, and corrected syntax to handle asynchronous operations and potential errors, also fixed the issue where the function was not being used to display the top 3 style recommendations.
 document.addEventListener('DOMContentLoaded', () => {
     const quizContainer = document.getElementById('quiz-container');
     const questions = document.querySelectorAll('.quiz-question');
@@ -44,14 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
         quizContainer.style.display = 'none';
         resultsContainer.style.display = 'block';
 
-        let topStyle = '';
-        let maxScore = 0;
-        for (const style in scores) {
-            if (scores[style] > maxScore) {
-                maxScore = scores[style];
-                topStyle = style;
-            }
-        }
+        const topStyles = calculateQuantumStyleMatrix(scores);
+        const topStyle = topStyles[0].style;
         
         const query = `${topStyle} indian fashion clothing`;
         
@@ -70,6 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.innerHTML = `<img src="${photo.urls.small}" alt="${photo.alt_description || ''}">`;
                 resultsGrid.appendChild(item);
             });
+
+            // Display top 3 style recommendations
+            const recommendations = document.createElement('div');
+            recommendations.innerHTML = '<h2>Top 3 Style Recommendations:</h2><ul></ul>';
+            const list = recommendations.querySelector('ul');
+            topStyles.forEach(style => {
+                const item = document.createElement('li');
+                item.textContent = style.style;
+                list.appendChild(item);
+            });
+            resultsContainer.appendChild(recommendations);
 
         } catch (error) {
             console.error('Error fetching results:', error);
@@ -117,8 +122,4 @@ document.addEventListener('DOMContentLoaded', () => {
         const topStyles = processedScores.slice(0, 3);
         return topStyles;
     }
-
-    // Example usage of calculateQuantumStyleMatrix function
-    const topStyles = calculateQuantumStyleMatrix(scores);
-    console.log(topStyles);
 });
