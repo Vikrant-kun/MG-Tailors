@@ -1,4 +1,4 @@
-// Modified to handle potential null or undefined values, ensure the API key is not exposed in the code, and corrected syntax for production-ready code, using environment variables for sensitive information.
+// Modified to handle potential null or undefined values, ensure the API key is not exposed in the code, and corrected syntax for production-ready code, using environment variables for sensitive information. Added error handling for Swiper initialization.
 document.addEventListener('DOMContentLoaded', () => {
     const apiKey = process.env.UNSPLASH_API_KEY; // Use environment variable for API key
 
@@ -37,18 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 heroSwiperWrapper.appendChild(slide);
             });
             
-            new Swiper('.hero-swiper', {
-                loop: true,
-                effect: 'fade',
-                autoplay: {
-                    delay: 4000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
+            try {
+                new Swiper('.hero-swiper', {
+                    loop: true,
+                    effect: 'fade',
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                });
+            } catch (error) {
+                console.error('Error initializing Swiper:', error);
+            }
         });
     }
 
