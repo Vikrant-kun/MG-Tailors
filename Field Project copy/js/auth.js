@@ -1,4 +1,6 @@
-// Safety correction: Implemented password hashing using crypto-js library to secure user passwords, and modified login logic to compare hashed passwords.
+// Safety correction: Implemented password hashing using crypto-js library to secure user passwords, and modified login logic to compare hashed passwords. Also, corrected the require statement for crypto-js to be at the top level, as it's not a function and should be called only once.
+const CryptoJS = require("crypto-js");
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const registerForm = document.getElementById('register-form');
@@ -31,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (registerForm) {
-        const CryptoJS = require("crypto-js");
         registerForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const name = event.target.username.value;
@@ -71,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (loginForm) {
-        const CryptoJS = require("crypto-js");
         loginForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const email = event.target.email.value;
