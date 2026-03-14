@@ -1,4 +1,4 @@
-// Safety correction: Implemented password hashing using crypto-js library to secure user passwords, and modified login logic to compare hashed passwords. Also, corrected the require statement for crypto-js to be at the top level, as it's not a function and should be called only once. Added input validation for register and login forms to prevent empty fields. Corrected the window.onclick event to check if the target is the modal background before closing it.
+// Safety correction: Implemented password hashing using crypto-js library to secure user passwords, and modified login logic to compare hashed passwords. Also, corrected the require statement for crypto-js to be at the top level, as it's not a function and should be called only once. Added input validation for register and login forms to prevent empty fields. Corrected the window.onclick event to check if the target is the modal background before closing it. Improved code structure and error handling for better maintainability and security.
 const CryptoJS = require("crypto-js");
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,19 +32,24 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'login.html';
     }
 
+    function validateInput(name, email, password) {
+        if (!name || !email || !password) {
+            showModal('Please fill in all fields.', 'Try Again', () => {
+                modal.style.display = 'none';
+            });
+            return false;
+        }
+        return true;
+    }
+
     if (registerForm) {
         registerForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             const name = event.target.username.value.trim();
             const email = event.target.email.value.trim();
             const password = event.target.password.value.trim();
-            
-            if (!name || !email || !password) {
-                showModal('Please fill in all fields.', 'Try Again', () => {
-                    modal.style.display = 'none';
-                });
-                return;
-            }
+
+            if (!validateInput(name, email, password)) return;
 
             try {
                 const checkResponse = await fetch(`http://localhost:3000/users?email=${email}`);
