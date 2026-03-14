@@ -1,4 +1,4 @@
-// Modified to handle potential null pointer exceptions, improved code quality by adding error handling for localStorage operations, and corrected potential issues with missing elements and invalid data
+// Modified to handle potential null pointer exceptions, improved code quality by adding error handling for localStorage operations, and corrected potential issues with missing elements and invalid data; also added input validation for cart item removal and improved code readability
 document.addEventListener('DOMContentLoaded', () => {
     const cartContent = document.getElementById('cart-content');
     const cartCountEl = document.getElementById('cart-count');
@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    /**
+     * Renders the cart content based on the items in local storage.
+     */
     function renderCart() {
         try {
             const cart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -66,7 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             document.querySelectorAll('.cart-item-remove button').forEach(button => {
                 button.addEventListener('click', (event) => {
-                    const indexToRemove = event.currentTarget.dataset.index;
+                    const indexToRemove = parseInt(event.currentTarget.dataset.index);
+                    if (isNaN(indexToRemove)) {
+                        console.error('Error: invalid index');
+                        return;
+                    }
                     removeItemFromCart(indexToRemove);
                 });
             });
@@ -75,6 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /**
+     * Removes an item from the cart based on the provided index.
+     * @param {number} index The index of the item to remove.
+     */
     function removeItemFromCart(index) {
         try {
             let cart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -91,6 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
+    /**
+     * Updates the cart count display based on the items in local storage.
+     */
     function updateCartCount() {
         try {
             const cart = JSON.parse(localStorage.getItem('cart') || '[]');
