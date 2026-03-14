@@ -1,11 +1,16 @@
-// Modified to handle potential null pointer exceptions and improved code quality by adding error handling for localStorage operations
+// Modified to handle potential null pointer exceptions, improved code quality by adding error handling for localStorage operations, and corrected potential issues with missing elements and invalid data
 document.addEventListener('DOMContentLoaded', () => {
     const cartContent = document.getElementById('cart-content');
     const cartCountEl = document.getElementById('cart-count');
 
+    if (!cartContent || !cartCountEl) {
+        console.error('Error: cart content or cart count element not found');
+        return;
+    }
+
     function renderCart() {
         try {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
             
             if (cart.length === 0) {
                 cartContent.innerHTML = `
@@ -17,22 +22,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            let cartItemsHTML = cart.map((item, index) => `
-                <div class="cart-item">
-                    <div class="cart-item-image">
-                        <img src="${item.imageUrl}" alt="${item.name}">
+            let cartItemsHTML = cart.map((item, index) => {
+                if (!item || !item.name || !item.imageUrl || !item.size || !item.quantity || !item.price) {
+                    console.error('Error: invalid cart item data');
+                    return '';
+                }
+                return `
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="${item.imageUrl}" alt="${item.name}">
+                        </div>
+                        <div class="cart-item-details">
+                            <h3>${item.name}</h3>
+                            <p>Size: ${item.size}</p>
+                            <p>Quantity: ${item.quantity}</p>
+                            <p><strong>₹${item.price}</strong></p>
+                        </div>
+                        <div class="cart-item-remove">
+                            <button data-index="${index}"><i class="fas fa-trash-alt"></i></button>
+                        </div>
                     </div>
-                    <div class="cart-item-details">
-                        <h3>${item.name}</h3>
-                        <p>Size: ${item.size}</p>
-                        <p>Quantity: ${item.quantity}</p>
-                        <p><strong>₹${item.price}</strong></p>
-                    </div>
-                    <div class="cart-item-remove">
-                        <button data-index="${index}"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
 
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
@@ -66,7 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function removeItemFromCart(index) {
         try {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            if (index < 0 || index >= cart.length) {
+                console.error('Error: invalid index');
+                return;
+            }
             cart.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartCount();
