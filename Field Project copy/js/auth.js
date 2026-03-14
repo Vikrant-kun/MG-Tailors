@@ -1,4 +1,4 @@
-// Safety correction: Implemented password hashing using crypto-js library to secure user passwords, and modified login logic to compare hashed passwords. Also, corrected the require statement for crypto-js to be at the top level, as it's not a function and should be called only once. Added input validation for register and login forms to prevent empty fields.
+// Safety correction: Implemented password hashing using crypto-js library to secure user passwords, and modified login logic to compare hashed passwords. Also, corrected the require statement for crypto-js to be at the top level, as it's not a function and should be called only once. Added input validation for register and login forms to prevent empty fields. Corrected the window.onclick event to check if the target is the modal background before closing it.
 const CryptoJS = require("crypto-js");
 
 document.addEventListener('DOMContentLoaded', () => {
