@@ -1,12 +1,22 @@
+// Modified to handle potential API key exposure by removing the hardcoded key and to improve error handling for production readiness
 document.addEventListener('DOMContentLoaded', () => {
-    const apiKey = 'wYFzoEBGM7LEVGhR-gjKlMSgRlXl9zy4AoidpzlH_g8';
+    const apiKey = 'YOUR_API_KEY_HERE'; // Replace with a secure method of storing and retrieving API keys
     const query = 'indian fashion';
     const count = 12;
     const galleryGrid = document.querySelector('.full-gallery');
+    const unsplashApiUrl = 'https://api.unsplash.com/photos/random';
 
     async function fetchPhotos() {
         try {
-            const response = await fetch(`https://api.unsplash.com/photos/random?query=${query}&count=${count}&client_id=${apiKey}`);
+            const params = new URLSearchParams({
+                query: query,
+                count: count,
+                client_id: apiKey
+            });
+            const response = await fetch(`${unsplashApiUrl}?${params.toString()}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const photos = await response.json();
 
             if (galleryGrid) {
