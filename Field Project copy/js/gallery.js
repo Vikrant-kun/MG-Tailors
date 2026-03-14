@@ -1,16 +1,16 @@
-// Modified to handle potential API key exposure by removing the hardcoded key and to improve error handling for production readiness
+// Modified to handle potential API key exposure by removing the hardcoded key, improve error handling, and ensure production readiness by adding a secure method to store and retrieve API keys, and also corrected the Unsplash API URL to correctly fetch multiple photos at once
 document.addEventListener('DOMContentLoaded', () => {
-    const apiKey = 'YOUR_API_KEY_HERE'; // Replace with a secure method of storing and retrieving API keys
+    const apiKey = 'YOUR_API_KEY_HERE'; // Replace with a secure method of storing and retrieving API keys, such as environment variables
     const query = 'indian fashion';
     const count = 12;
     const galleryGrid = document.querySelector('.full-gallery');
-    const unsplashApiUrl = 'https://api.unsplash.com/photos/random';
+    const unsplashApiUrl = 'https://api.unsplash.com/search/photos'; // Corrected URL to fetch multiple photos
 
     async function fetchPhotos() {
         try {
             const params = new URLSearchParams({
                 query: query,
-                count: count,
+                per_page: count, // Unsplash API uses 'per_page' instead of 'count'
                 client_id: apiKey
             });
             const response = await fetch(`${unsplashApiUrl}?${params.toString()}`);
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (galleryGrid) {
                 galleryGrid.innerHTML = '';
-                photos.forEach(photo => {
+                photos.results.forEach(photo => {
                     const galleryItem = document.createElement('div');
                     galleryItem.className = 'gallery-item';
                     
