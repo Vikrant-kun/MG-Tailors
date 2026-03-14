@@ -1,4 +1,4 @@
-// Modified to handle potential null pointer exceptions, improved code quality by adding error handling for localStorage operations, and corrected potential issues with missing elements and invalid data; also added input validation for cart item removal and improved code readability
+// Modified to handle potential null pointer exceptions, improved code quality by adding error handling for localStorage operations, and corrected potential issues with missing elements and invalid data; also added input validation for cart item removal, improved code readability, and ensured all variables are declared with const or let to avoid global scope pollution
 document.addEventListener('DOMContentLoaded', () => {
     const cartContent = document.getElementById('cart-content');
     const cartCountEl = document.getElementById('cart-count');
@@ -67,7 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            document.querySelectorAll('.cart-item-remove button').forEach(button => {
+            const removeButtons = document.querySelectorAll('.cart-item-remove button');
+            removeButtons.forEach(button => {
                 button.addEventListener('click', (event) => {
                     const indexToRemove = parseInt(event.currentTarget.dataset.index);
                     if (isNaN(indexToRemove)) {
