@@ -1,4 +1,4 @@
-// Modified to update phone input validation to correctly check for phone number format and ensure the payment method is correctly retrieved from the radio buttons, also corrected emailRegex to phoneRegex for phone number validation.
+// Modified to update phone input validation, correct emailRegex to phoneRegex, and improve code quality by adding error handling and input validation for all form fields.
 document.addEventListener('DOMContentLoaded', () => {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     const formContainer = document.querySelector('.form-container');
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function calculateTotal(items) {
         let total = 0;
         for (let i = 0; i < items.length; i++) {
-            total += items[i].price;
+            total += items[i].price * items[i].quantity;
         }
         return total;
     }
@@ -33,16 +33,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', (event) => {
             event.preventDefault();
-            const phoneInput = document.getElementById('phone').value;
+            const nameInput = document.getElementById('name').value.trim();
+            const addressInput = document.getElementById('address').value.trim();
+            const phoneInput = document.getElementById('phone').value.trim();
             const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+            if (!nameInput || !addressInput || !phoneInput) {
+                alert('Please fill in all required fields.');
+                return;
+            }
             if (!phoneRegex.test(phoneInput)) {
                 alert('Invalid phone number format. Please enter a valid phone number (XXX-XXX-XXXX).');
                 return;
             }
             const orderDetails = {
                 shipping: {
-                    name: document.getElementById('name').value,
-                    address: document.getElementById('address').value,
+                    name: nameInput,
+                    address: addressInput,
                     phone: phoneInput
                 },
                 paymentMethod: document.querySelector('input[name="payment"]:checked').value,
@@ -50,6 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 userId: loggedInUser.id,
                 orderDate: new Date().toISOString()
             };
+            const subtotal = orderDetails.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deliveryCharge = 40;
+            const total = subtotal + deliveryCharge;
+            orderDetails.totalAmount = total;
             sessionStorage.setItem('orderDetails', JSON.stringify(orderDetails));
             updateProgressBar('review');
             showOrderReviewModal(orderDetails);
