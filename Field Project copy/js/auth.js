@@ -1,4 +1,4 @@
-// Safety correction: Implemented password hashing using crypto-js library to secure user passwords, and modified login logic to compare hashed passwords. Also, corrected the require statement for crypto-js to be at the top level, as it's not a function and should be called only once.
+// Safety correction: Implemented password hashing using crypto-js library to secure user passwords, and modified login logic to compare hashed passwords. Also, corrected the require statement for crypto-js to be at the top level, as it's not a function and should be called only once. Added input validation for register and login forms to prevent empty fields.
 const CryptoJS = require("crypto-js");
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -35,10 +35,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (registerForm) {
         registerForm.addEventListener('submit', async (event) => {
             event.preventDefault();
-            const name = event.target.username.value;
-            const email = event.target.email.value;
-            const password = event.target.password.value;
+            const name = event.target.username.value.trim();
+            const email = event.target.email.value.trim();
+            const password = event.target.password.value.trim();
             
+            if (!name || !email || !password) {
+                showModal('Please fill in all fields.', 'Try Again', () => {
+                    modal.style.display = 'none';
+                });
+                return;
+            }
+
             try {
                 const checkResponse = await fetch(`http://localhost:3000/users?email=${email}`);
                 const existingUsers = await checkResponse.json();
@@ -74,8 +81,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loginForm) {
         loginForm.addEventListener('submit', async (event) => {
             event.preventDefault();
-            const email = event.target.email.value;
-            const password = event.target.password.value;
+            const email = event.target.email.value.trim();
+            const password = event.target.password.value.trim();
+
+            if (!email || !password) {
+                showModal('Please fill in all fields.', 'Try Again', () => {
+                    modal.style.display = 'none';
+                });
+                return;
+            }
 
             try {
                 const response = await fetch(`http://localhost:3000/users?email=${email}`);
